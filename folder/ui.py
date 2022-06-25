@@ -51,11 +51,6 @@ class Minesweeper:
         No tile can touch more than 3 mines?
         """
         pass
-        # if type == "bootcamp":
-        #     pass
-        #     window = Tk()
-        #     window.title("Welcome to Bootcamp")
-        #     window.minsize(width=500, height=500)
         self.label.config(text="Welcome to Bootcamp")
         self.label.pack()
         self.label2 = Label()
@@ -66,14 +61,21 @@ class Minesweeper:
         self.button_infantry.destroy()
         self.button_veteran.destroy()
             
-        #     window.mainloop()
-        # elif type == "infantry":
-        #     pass
-        # elif type == "special_forces":
-        #     pass
+        
         
     def infantry(self):
         pass
     
     def special_forces(self):
         pass
+
+    def flag(self):
+        self.label.configure(text="🏴‍☠️")
+
+    def make_tiles(self, number):
+        self.number = number
+        self.count = 0
+        self.column = 0
+        self.row = 0
+        for i in range(0, number):
+            pass

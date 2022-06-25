@@ -1,0 +1,4 @@
+WIDTH = 1000
+HEIGHT = 800
+BG = "dark green"
+GRID_SIZE = 10
