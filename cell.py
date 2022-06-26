@@ -12,6 +12,7 @@ class Cell:
     def __init__(self, x, y, is_mine=False):
         self.is_mine = is_mine
         self.is_opened = False
+        self.maybe_mine = False
         self.cell_btn_object = None
         self.x = x
         self.y = y
@@ -40,7 +41,6 @@ class Cell:
         Cell.cell_count_label_object = lbl
         
     def left_click(self, event):
-        print(self.is_mine)
         # print("Left Click")
         if self.is_mine:
             self.show_mine()
@@ -95,9 +95,14 @@ class Cell:
                 return cell
     
     def right_click(self, event):
-        print(event)
-        print("Right Click")
-        
+        print("Right click")
+        if not self.maybe_mine:
+            self.cell_btn_object.config(bg='orange')
+            self.maybe_mine = True
+        else:
+            self.cell_btn_object.config(bg='SystemButtonFace')
+            self.maybe_mine = False
+            
     @staticmethod
     def randomize_mines():
         mines = random.sample(Cell.all, 
