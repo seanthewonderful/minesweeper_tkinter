@@ -1,8 +1,9 @@
 from tkinter import Button, Label
+import tkinter
 import random
 import math
 import settings
-
+import sys
 
 class Cell:
     all = []
@@ -49,6 +50,9 @@ class Cell:
                 for cell in self.surrounded_cells:
                     cell.show_cell()
             self.show_cell()
+        # Cancel all click events going forward once cell is opened
+        self.cell_btn_object.unbind('<Button-1>')
+        self.cell_btn_object.unbind('<Button-2>')
         
     def show_cell(self):
         if not self.is_opened:
@@ -87,6 +91,8 @@ class Cell:
         
     def show_mine(self):
         self.cell_btn_object.configure(text="🏴‍☠️")
+        tkinter.messagebox.showwarning(message='Game over, You blew up')
+        sys.exit()
     
     def get_cell_by_axis(self, x, y):
         # Return a cell object base on value of x and y
@@ -97,10 +103,12 @@ class Cell:
     def right_click(self, event):
         print("Right click")
         if not self.maybe_mine:
-            self.cell_btn_object.config(bg='orange')
+            self.cell_btn_object.configure(text="🏴‍☠️")
+            # self.cell_btn_object.config(bg='orange')
             self.maybe_mine = True
         else:
-            self.cell_btn_object.config(bg='SystemButtonFace')
+            self.cell_btn_object.configure(text="")
+            # self.cell_btn_object.config(bg='SystemButtonFace')
             self.maybe_mine = False
             
     @staticmethod
