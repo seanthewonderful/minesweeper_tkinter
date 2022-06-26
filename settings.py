@@ -2,3 +2,4 @@ WIDTH = 1000
 HEIGHT = 800
 BG = "dark green"
 GRID_SIZE = 10
+CELL_COUNT = GRID_SIZE ** 2
