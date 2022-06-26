@@ -20,6 +20,18 @@ top_frame = Frame(
     )
 top_frame.place(x=0, y=0)
 
+game_title = Label(
+    top_frame,
+    bg='green',
+    fg='white',
+    text='Watch your step',
+    font=('American Typewriter', 30)
+)
+game_title.place(
+    x=utils.width_pct(35),
+    y=utils.height_pct(10)
+)
+
 left_frame = Frame(
     root,
     bg=settings.BG,

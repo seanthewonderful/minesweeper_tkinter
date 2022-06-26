@@ -35,9 +35,9 @@ class Cell:
         lbl = Label(
             location, 
             text=f"Cells Left: {Cell.cell_count}",
-            bg="black",
+            bg="green",
             fg="white",
-            font=("Typewriter", 26)
+            font=("American Typewriter", 26)
             )
         Cell.cell_count_label_object = lbl
         
@@ -50,6 +50,11 @@ class Cell:
                 for cell in self.surrounded_cells:
                     cell.show_cell()
             self.show_cell()
+            # Win Game Logic:
+            # If mines equal to the cells remaining, victory
+            if Cell.cell_count == settings.MINE_COUNT:
+                tkinter.messagebox.showinfo(message='Minefield safely traversed')
+            
         # Cancel all click events going forward once cell is opened
         self.cell_btn_object.unbind('<Button-1>')
         self.cell_btn_object.unbind('<Button-2>')
@@ -114,7 +119,7 @@ class Cell:
     @staticmethod
     def randomize_mines():
         mines = random.sample(Cell.all, 
-                              math.floor(len(Cell.all)/4))
+                              settings.MINE_COUNT)
         for mine in mines:
             mine.is_mine = True
     
