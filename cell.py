@@ -1,7 +1,6 @@
-from tkinter import Button, Label
+from tkinter import Button, Label, messagebox
 import tkinter
 import random
-import math
 import settings
 import sys
 
@@ -53,7 +52,7 @@ class Cell:
             # Win Game Logic:
             # If mines equal to the cells remaining, victory
             if Cell.cell_count == settings.MINE_COUNT:
-                tkinter.messagebox.showinfo(message='Minefield safely traversed')
+                messagebox.showinfo(message='Minefield safely traversed')
             
         # Cancel all click events going forward once cell is opened
         self.cell_btn_object.unbind('<Button-1>')
@@ -96,7 +95,7 @@ class Cell:
         
     def show_mine(self):
         self.cell_btn_object.configure(text="🏴‍☠️")
-        tkinter.messagebox.showwarning(message='Game over, You blew up')
+        messagebox.showwarning(message='Game over, You blew up')
         sys.exit()
     
     def get_cell_by_axis(self, x, y):

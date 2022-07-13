@@ -1,5 +1,4 @@
 from tkinter import *
-from turtle import left
 import settings
 import utils
 from cell import Cell
